@@ -35,18 +35,18 @@ handle_error = function(e) {
  console.error(e)
 },
 Do = function() {
-
+ console.log("FDSFSDFSD")
  rpas.config({
   "api-version": "v1",
   "username": "client_100_admin",
   "password": "13705754"
- })
-
+ }).
+ then(function() {
   var 
   taxonomies_p = rpas.taxonomies.list().
    then(function(taxonomies) {
     console.log(taxonomies)
-    /*console.log(JSON.stringify(_.extend.apply({}, taxonomies.
+    console.log(JSON.stringify(_.extend.apply({}, taxonomies.
      map(function(taxonomy) {
       var
       tmp = {}
@@ -65,11 +65,12 @@ Do = function() {
        })
 
       return tmp
-     })), null, 4))*/
+     })), null, 4))
    },
    function(e) {
     console.error(e)
    }).
    done()
+ })
 
 }()

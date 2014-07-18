@@ -29,7 +29,7 @@ rpas_headers =
 	"x-its-rpas": null
 
 resolve_uri = (resource, params...) ->
-	["#{base_uri}/#{resources[resource]}", params].join "/"
+	["#{base_uri}/#{resources[resource] or resource}", params].join "/"
 
 exports.config = (options) ->
 	deferred = do q.defer
@@ -66,9 +66,9 @@ exports.config = (options) ->
 
 create_resource_methods = (resource) ->
 	list: (query) ->
-	  deferred =  do q.defer
+	 deferred =  do q.defer
 
-		request
+	 request
 			url: resolve_uri resource
 			qs: query
 			headers: rpas_headers
@@ -76,7 +76,7 @@ create_resource_methods = (resource) ->
 			(e, r, b) -> 
 				if e then deferred.reject e else deferred.resolve b
 
-	  deferred.promise
+	 deferred.promise
 
 	select: (id, query) ->
 		deferred = do q.defer
@@ -89,7 +89,7 @@ create_resource_methods = (resource) ->
 			(e, r, b) -> 
 				if e then deferred.reject e else deferred.resolve b
 
-	deferred.promise
+	 deferred.promise
 
 
 for key of resources

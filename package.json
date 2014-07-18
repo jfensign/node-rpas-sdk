@@ -1,6 +1,6 @@
 {
   "name": "node-rpas-sdk",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "RPAS Cloud SDK",
   "main": "./lib/index.js",
   "scripts": {
