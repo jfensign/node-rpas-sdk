@@ -25,7 +25,6 @@ exports.config = (options) ->
 
 	if options.token
 		rpas_headers["x-its-rpas"] = options.token
-
 		q.resolve options
 
 	else
@@ -52,30 +51,33 @@ exports.config = (options) ->
 
 	deferred.promise
 
+create_resource_methods = (resource) ->
+	list: (query) ->
+	  deferred =  do q.defer
+
+		request
+			url: resolve_uri key
+			qs: query
+			headers: rpas_headers
+			json: true
+			(e, r, b) -> 
+				if e then deferred.reject e else deferred.resolve b
+
+	  deferred.promise
+
+	select: (id, query) ->
+		deferred = do q.defer
+
+		request
+			url: resolve_uri key, id
+			qs: query
+			headers: rpas_headers
+			json: true
+			(e, r, b) -> 
+				if e then deferred.reject e else deferred.resolve b
+
+	deferred.promise
+
+
 for key of resources
-	exports[key] = 
-		list: (query) ->
-			deferred =  do q.defer
-
-			request
-			  url: resolve_uri key
-			  qs: query
-			  headers: rpas_headers
-			  json: true
-			  (e, r, b) -> if e then deferred.reject e else deferred.resolve b
-
-	 		deferred.promise
-
-		select: (id, query) ->
-			deferred = do q.defer
-
-			request
-			  url: resolve_uri key, id
-			  qs: query
-			  headers: rpas_headers
-			  json: true
-			  (e, r, b) -> if e then deferred.reject e else deferred.resolve b
-
-			deferred.promise
-
-
+	exports[key] = create_resource_methods key
