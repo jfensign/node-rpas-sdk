@@ -5,6 +5,8 @@ SDK for the RPAS Cloud REST API
 
 [![NPM](https://nodei.co/npm/node-rpas-sdk.png?compact=true)](https://nodei.co/npm/node-rpas-sdk/)
 
+[Online Example Available on Runnable](http://runnable.com/U8mzFonoYyJLo6Fp/rpas-cloud-node-js-example)
+
 ##Usage
 
 ``` javascript
