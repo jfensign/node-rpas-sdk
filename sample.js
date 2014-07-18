@@ -58,7 +58,7 @@ flatten_taxonomy_paths = function() {
   }))
 
   //Do something with paths
-  //console.log("%s\n\n\n", JSON.stringify(grouped_paths, null, 4))
+  console.log("%s\n\n\n", JSON.stringify(grouped_paths, null, 4))
 
  },
  function(e) {
@@ -68,28 +68,22 @@ flatten_taxonomy_paths = function() {
 
 rpas.config({
  "api-version": "v1",
- "username": "client_100_admin",
- "password": "13705754"
+ "username": "",
+ "password": ""
 }).
 then(function(me) {
-
  //With streams
  rpas.taxonomies.list.stream().pipe(process.stdout)
-
  return rpas.taxonomies.list
-
-}, handle_error).
-then(function(list_resource) {
+}, handle_error).then(function(list_resource) {
  //With promises
  list_resource.promise().then(flatten_taxonomy_paths, handle_error)
  return list_resource
-}).
-then(function(list_resource) {
+}, handle_error).then(function(list_resource) {
  //With traditional callbacks
  list_resource.cb({}, function(e, rd, data) {
   if(e) return handle_error(e)
-
-  console.log(data)
+  console.log("%s\n", JSON.stringify(data, null, 4))
  })
-})
+}, handle_error)
 
