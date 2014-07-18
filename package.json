@@ -1,0 +1,29 @@
+{
+  "name": "node-rpas-sdk",
+  "version": "0.0.0",
+  "description": "RPAS Cloud SDK",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jfensign/node-rpas-sdk"
+  },
+  "keywords": [
+    "RPAS",
+    "Cloud"
+  ],
+  "author": "Joseph Ensign",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jfensign/node-rpas-sdk/issues"
+  },
+  "homepage": "https://github.com/jfensign/node-rpas-sdk",
+  "dependencies": {
+   "request": "2.37.0",
+   "coffee-script": "1.7.1",
+   "q": "1.0.1",
+   "underscore": "1.6.0"
+  }
+}
