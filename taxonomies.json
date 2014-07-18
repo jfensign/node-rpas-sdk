@@ -1,0 +1,274 @@
+[
+  {
+    "ClientID": "Client_100",
+    "CreateDate": "2014-06-02T05:06:54.218Z",
+    "CreatedBy": {
+      "_id": "51e43b80f14c792027000001",
+      "UserName": "client_100_admin"
+    },
+    "ResearchTypeId": "538ac62c06849f7035facd9d",
+    "TaxonomyDescription": "New",
+    "TaxonomyGroups": [
+      {
+        "color": "#a01414",
+        "name": "Sector"
+      },
+      {
+        "color": "#2a6c93",
+        "name": "Sub-Sector"
+      },
+      {
+        "color": "#b4be0e",
+        "name": "Industry"
+      }
+    ],
+    "TaxonomyLevels": [
+      {
+        "children": [
+          {
+            "group": "Sector",
+            "color": "#000000",
+            "name": "2",
+            "depth": "1",
+            "children": [
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "210",
+                "depth": "2",
+                "original_path": "21"
+              },
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "220",
+                "depth": "2",
+                "original_path": "22"
+              },
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "230",
+                "depth": "2",
+                "original_path": "23"
+              },
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "240",
+                "depth": "2",
+                "original_path": "24"
+              },
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "250",
+                "depth": "2",
+                "original_path": "25"
+              }
+            ],
+            "original_path": "20"
+          },
+          {
+            "group": "Sector",
+            "color": "#000000",
+            "name": "3",
+            "depth": "1"
+          },
+          {
+            "group": "Sector",
+            "color": "#000000",
+            "name": "400",
+            "depth": "1",
+            "children": [
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "410",
+                "depth": "2",
+                "original_path": "41"
+              },
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "420",
+                "depth": "2",
+                "original_path": "42"
+              }
+            ],
+            "original_path": "40"
+          },
+          {
+            "group": "Sector",
+            "color": "#000000",
+            "name": "Place",
+            "depth": "1",
+            "children": [
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "11",
+                "depth": "2"
+              },
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "12",
+                "depth": "2"
+              },
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "13",
+                "depth": "2"
+              },
+              {
+                "group": "Sub-Sector",
+                "color": "#000000",
+                "name": "14",
+                "depth": "2"
+              }
+            ],
+            "original_path": "1"
+          }
+        ],
+        "depth": "0",
+        "name": "Funds"
+      }
+    ],
+    "TaxonomyName": "Funds",
+    "TaxonomyUpdateCount": 15,
+    "_id": "538c066e0c193fdf5cb43762",
+    "ResearchTypeName": "Test"
+  },
+  {
+    "ClientID": "Client_100",
+    "CreateDate": "2014-06-02T03:43:34.226Z",
+    "CreatedBy": {
+      "_id": "51e43b80f14c792027000001",
+      "UserName": "client_100_admin"
+    },
+    "ResearchTypeId": "538ac62c06849f7035facd9d",
+    "TaxonomyDescription": "test",
+    "TaxonomyGroups": [
+      {
+        "color": "#81d312",
+        "name": "1"
+      },
+      {
+        "color": "#dd3737",
+        "name": "2"
+      },
+      {
+        "color": "#2ccba8",
+        "name": "3"
+      }
+    ],
+    "TaxonomyLevels": [
+      {
+        "children": [
+          {
+            "group": "1",
+            "color": "#000000",
+            "name": "1",
+            "depth": "1",
+            "children": [
+              {
+                "group": "2",
+                "color": "#dd3737",
+                "name": "12",
+                "depth": "2"
+              },
+              {
+                "group": "2",
+                "color": "#dd3737",
+                "name": "13",
+                "depth": "2"
+              }
+            ]
+          },
+          {
+            "group": "1",
+            "color": "#000000",
+            "name": "200",
+            "depth": "1",
+            "children": [
+              {
+                "group": "2",
+                "color": "#000000",
+                "name": "210",
+                "depth": "2",
+                "children": [
+                  {
+                    "group": "4",
+                    "color": "#000000",
+                    "name": "211",
+                    "depth": "3"
+                  },
+                  {
+                    "group": "4",
+                    "color": "#000000",
+                    "name": "212",
+                    "depth": "3"
+                  },
+                  {
+                    "group": "4",
+                    "color": "#000000",
+                    "name": "213",
+                    "depth": "3"
+                  }
+                ],
+                "original_path": "21"
+              },
+              {
+                "group": "2",
+                "color": "#000000",
+                "name": "22",
+                "depth": "2",
+                "children": [
+                  {
+                    "group": "4",
+                    "color": "#000000",
+                    "name": "221",
+                    "depth": "3"
+                  }
+                ]
+              },
+              {
+                "group": "2",
+                "color": "#000000",
+                "name": "23",
+                "depth": "2"
+              },
+              {
+                "group": "2",
+                "color": "#000000",
+                "name": "24",
+                "depth": "2"
+              }
+            ],
+            "original_path": "20"
+          },
+          {
+            "group": "1",
+            "color": "#000000",
+            "name": "3",
+            "depth": "1"
+          },
+          {
+            "group": "1",
+            "color": "#000000",
+            "name": "4",
+            "depth": "1"
+          }
+        ],
+        "depth": "0",
+        "name": "test"
+      }
+    ],
+    "TaxonomyName": "test",
+    "TaxonomyUpdateCount": 15,
+    "_id": "538bf2e6a23c5b7154ea6d55",
+    "ResearchTypeName": "Test"
+  }
+]

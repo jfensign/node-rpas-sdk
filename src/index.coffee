@@ -27,6 +27,7 @@ base_uri = "http://54.214.50.90"
 rpas_headers = 
 	"api-version": "v1"
 	"x-its-rpas": null
+	"Accept": "application/json"
 
 resolve_uri = (resource, params...) ->
 	["#{base_uri}/#{resources[resource] or resource}", params].join "/"
@@ -65,31 +66,61 @@ exports.config = (options) ->
 	deferred.promise
 
 create_resource_methods = (resource) ->
-	list: (query) ->
-	 deferred =  do q.defer
+	list:
+		promise: (query) ->
+	 	deferred =  do q.defer
 
-	 request
-			url: resolve_uri resource
-			qs: query
-			headers: rpas_headers
-			json: true
-			(e, r, b) -> 
-				if e then deferred.reject e else deferred.resolve b
+	 	request
+				url: resolve_uri resource
+				qs: query
+				headers: rpas_headers
+				json: true
+				(e, r, b) -> 
+					if e then deferred.reject e else deferred.resolve b
 
-	 deferred.promise
+	 	deferred.promise
 
-	select: (id, query) ->
-		deferred = do q.defer
+	 stream: (query) ->
+	 	request
+	 	 url: resolve_uri resource
+	 	 qs: query
+	 	 headers: rpas_headers
+	 	 json: true
 
-		request
-			url: resolve_uri resource, id
-			qs: query
-			headers: rpas_headers
-			json: true
-			(e, r, b) -> 
-				if e then deferred.reject e else deferred.resolve b
+	 cb: (query, next) ->
+	 	request
+	 		url: resolve_uri resource
+	 		qs: query
+	 		headers: rpas_headers
+	 		next
 
-	 deferred.promise
+	select:
+		promise: (id, query) ->
+			deferred = do q.defer
+
+			request
+				url: resolve_uri resource, id
+				qs: query
+				headers: rpas_headers
+				json: true
+				(e, r, b) -> 
+					if e then deferred.reject e else deferred.resolve b
+
+	 	deferred.promise
+
+	 stream: (id, query) ->
+			request
+				url: resolve_uri resource, id
+				qs: query
+				headers: rpas_headers
+				json: true
+
+	 generic: (id, query, next) ->
+	 	request
+	 		url: resolve_uri resource, id
+	 		qs: query
+	 		headers: rpas_headers
+	 		next
 
 
 for key of resources

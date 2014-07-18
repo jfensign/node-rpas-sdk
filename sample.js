@@ -28,13 +28,13 @@ extract = function extract_paths(root) {
   : path;
 },
 
-handle_auth_error = function(error) {
- console.error("Could not authenticate.\nInfo: %s", JSON.stringify(error))
+handle_error = function(error) {
+ console.error("Error encountered.\nInfo: %s", JSON.stringify(error))
 },
 
 flatten_taxonomy_paths = function() {
  var 
- taxonomies_p = rpas.taxonomies.list().then(function(taxonomies) {
+ taxonomies_p = rpas.taxonomies.list.promise().then(function(taxonomies) {
   var
   grouped_paths = _.extend.apply({}, taxonomies.map(function(taxonomy) {
    var
@@ -58,7 +58,7 @@ flatten_taxonomy_paths = function() {
   }))
 
   //Do something with paths
-  console.log(JSON.stringify(grouped_paths, null, 4))
+  //console.log("%s\n\n\n", JSON.stringify(grouped_paths, null, 4))
 
  },
  function(e) {
@@ -68,8 +68,28 @@ flatten_taxonomy_paths = function() {
 
 rpas.config({
  "api-version": "v1",
- "username": "client_100_admi",
+ "username": "client_100_admin",
  "password": "13705754"
 }).
-then(flatten_taxonomy_paths, handle_auth_error)
+then(function(me) {
+
+ //With streams
+ rpas.taxonomies.list.stream().pipe(process.stdout)
+
+ return rpas.taxonomies.list
+
+}, handle_error).
+then(function(list_resource) {
+ //With promises
+ list_resource.promise().then(flatten_taxonomy_paths, handle_error)
+ return list_resource
+}).
+then(function(list_resource) {
+ //With traditional callbacks
+ list_resource.cb({}, function(e, rd, data) {
+  if(e) return handle_error(e)
+
+  console.log(data)
+ })
+})
 
