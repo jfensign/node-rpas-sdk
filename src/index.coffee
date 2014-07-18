@@ -8,6 +8,19 @@ resources =
 	taxonomies: "taxonomies"
 	rated_items: "rated_items"
 	workflows: "workflows"
+	rated_items: "rated_items"
+	documents: "documents"
+	research_types: "research_types"
+	products: "products"
+	templates: "templates"
+	lists: "lists"
+	disclosures: "disclosures"
+	disclosure_groups: "disclosure_groups"
+	contacts: "contacts"
+	contact_groups: "contact_groups"
+	data_sources: "data_sources"
+	data_types: "data_types"
+
 
 base_uri = "http://54.214.50.90"
 
