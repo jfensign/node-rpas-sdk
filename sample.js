@@ -3,13 +3,10 @@ rpas = require("./lib"),
 
 _ = require('underscore'),
 
-taxonomy_paths = [],
-
 extract = function extract_paths(root) {
- var delimiter = " | ";
- 
  var 
  path = root.original_path || root.name,
+ delimiter = " | ",
  recurse = function () {
   var 
   paths = [].concat.apply([], root.children.
@@ -31,46 +28,48 @@ extract = function extract_paths(root) {
   : path;
 },
 
-handle_error = function(e) {
- console.error(e)
+handle_auth_error = function(error) {
+ console.error("Could not authenticate.\nInfo: %s", JSON.stringify(error))
 },
-Do = function() {
- console.log("FDSFSDFSD")
- rpas.config({
-  "api-version": "v1",
-  "username": "client_100_admin",
-  "password": "13705754"
- }).
- then(function() {
-  var 
-  taxonomies_p = rpas.taxonomies.list().
-   then(function(taxonomies) {
-    console.log(taxonomies)
-    console.log(JSON.stringify(_.extend.apply({}, taxonomies.
-     map(function(taxonomy) {
-      var
-      tmp = {}
 
-      tmp[taxonomy.TaxonomyName] = extract(taxonomy.TaxonomyLevels[0]).
-       sort(function(a, b) {
-        var norm = function(x) {
-         return x.toUpperCase()
-        }
+flatten_taxonomy_paths = function() {
+ var 
+ taxonomies_p = rpas.taxonomies.list().then(function(taxonomies) {
+  var
+  grouped_paths = _.extend.apply({}, taxonomies.map(function(taxonomy) {
+   var
+   tmp = {}
 
-        a = norm(a)
-        b = norm(b)
+   tmp[taxonomy.TaxonomyName] = extract(taxonomy.TaxonomyLevels[0]).
+    sort(function(a, b) {
+     var 
+     norm = function(x) {
+      return x.toUpperCase()
+     }
 
-        return a<b?-1:a>b?1:0
+     a = norm(a)
+     b = norm(b)
 
-       })
+     return a<b?-1:a>b?1:0
 
-      return tmp
-     })), null, 4))
-   },
-   function(e) {
-    console.error(e)
-   }).
-   done()
- })
+    })
 
-}()
+   return tmp
+  }))
+
+  //Do something with paths
+  console.log(JSON.stringify(grouped_paths, null, 4))
+
+ },
+ function(e) {
+  console.error(e)
+ }).done()
+}
+
+rpas.config({
+ "api-version": "v1",
+ "username": "client_100_admi",
+ "password": "13705754"
+}).
+then(flatten_taxonomy_paths, handle_auth_error)
+
