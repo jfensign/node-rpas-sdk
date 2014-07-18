@@ -69,7 +69,7 @@ create_resource_methods = (resource) ->
 	  deferred =  do q.defer
 
 		request
-			url: resolve_uri key
+			url: resolve_uri resource
 			qs: query
 			headers: rpas_headers
 			json: true
@@ -82,7 +82,7 @@ create_resource_methods = (resource) ->
 		deferred = do q.defer
 
 		request
-			url: resolve_uri key, id
+			url: resolve_uri resource, id
 			qs: query
 			headers: rpas_headers
 			json: true
