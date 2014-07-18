@@ -8,7 +8,6 @@ resources =
 	taxonomies: "taxonomies"
 	rated_items: "rated_items"
 	workflows: "workflows"
-	authenticate: "authenticate"
 
 base_uri = "http://54.214.50.90"
 
@@ -31,7 +30,9 @@ exports.config = (options) ->
 
 	else
 		if options.username and options.password
-			auth_encoded_str = new Buffer("#{options.username}:#{options.password}").toString "base64"
+			auth_encoded_str = new Buffer(
+				"#{options.username}:#{options.password}"
+			).toString "base64"
 			auth_string = "Basic #{auth_encoded_str}"
 			request
 				method: "post" 
@@ -41,13 +42,10 @@ exports.config = (options) ->
 				(e, r, b) ->
 					try
 						b = JSON.parse(b)
-						console.log(b.Auth)
 						if b.Auth
-							console.log("AUTHED")
 							rpas_headers["x-its-rpas"] = b.Auth.RequestToken
 							deferred.resolve b
 						else
-							console.log("NOT AUTHED")
 							deferred.reject e or b
 					catch e
 					  deferred.reject e or b
@@ -60,7 +58,7 @@ for key of resources
 			deferred =  do q.defer
 
 			request
-			  url: resolve_uri "taxonomies"
+			  url: resolve_uri key
 			  qs: query
 			  headers: rpas_headers
 			  json: true
@@ -72,7 +70,7 @@ for key of resources
 			deferred = do q.defer
 
 			request
-			  url: resolve_uri "taxonomies", id
+			  url: resolve_uri key, id
 			  qs: query
 			  headers: rpas_headers
 			  json: true
