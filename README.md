@@ -13,8 +13,9 @@ var rpas = require('node-rpas-sdk')
 
 rpas.config({
  "api-version": "v1",
- "username": "",
- "password": ""
+ "username": "", //unless using token auth
+ "password": "", //unless using token auth
+ "token": ""
 }).
 then(function(me) {
  //With streams
