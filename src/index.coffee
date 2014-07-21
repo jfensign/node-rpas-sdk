@@ -54,7 +54,7 @@ exports.config = (options) ->
 					"Authorization": auth_string
 				(e, r, b) ->
 					try
-						b = JSON.parse(b)
+						b = JSON.parse b
 						if b.Auth
 							rpas_headers["x-its-rpas"] = b.Auth.RequestToken
 							deferred.resolve b
@@ -115,7 +115,7 @@ create_resource_methods = (resource) ->
 				headers: rpas_headers
 				json: true
 
-	 generic: (id, query, next) ->
+	 cb: (id, query, next) ->
 	 	request
 	 		url: resolve_uri resource, id
 	 		qs: query
